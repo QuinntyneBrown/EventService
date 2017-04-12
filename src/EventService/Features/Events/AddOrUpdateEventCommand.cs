@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.Data.Entity;
 
+using static EventService.Features.Geolocation.GetLongLatCoordinatesQuery;
+
 namespace EventService.Features.Events
 {
     public class AddOrUpdateEventCommand
@@ -39,8 +41,24 @@ namespace EventService.Features.Events
                     _context.Events.Add(entity = new Event() { TenantId = tenant.Id });
                 }
 
+                var longLatResponse = await _mediator.Send(new GetLongLatCoordinatesRequest() { Address = $"{request.Event.Address},{request.Event.City},{request.Event.Province},{request.Event.PostalCode}" });
+
+                entity.Longitude = longLatResponse.Longitude;
+
+                entity.Latitude = longLatResponse.Latitude;
+
                 entity.Name = request.Event.Name;
-                
+
+                entity.Address = request.Event.Address;
+
+                entity.City = request.Event.City;
+
+                entity.Province = request.Event.Province;
+
+                entity.PostalCode = request.Event.PostalCode;
+
+                entity.Description = request.Event.Description;
+
                 await _context.SaveChangesAsync();
 
                 return new AddOrUpdateEventResponse();
@@ -48,6 +66,7 @@ namespace EventService.Features.Events
 
             private readonly EventServiceContext _context;
             private readonly ICache _cache;
+            protected readonly IMediator _mediator;
         }
 
     }

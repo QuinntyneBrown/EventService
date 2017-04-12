@@ -140,6 +140,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Device" />
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.IdentityModel.Tokens.Jwt, Version=4.0.20622.1351, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\System.IdentityModel.Tokens.Jwt.4.0.2.206221351\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
@@ -230,6 +231,8 @@
     <Compile Include="Features\DigitalAssets\UploadHandlers\FileMultipartFormDataStreamProvider.cs" />
     <Compile Include="Features\DigitalAssets\UploadHandlers\InMemoryMultipartFormDataStreamProvider.cs" />
     <Compile Include="Features\DigitalAssets\UploadHandlers\StreamHelper.cs" />
+    <Compile Include="Features\Geolocation\GetLongLatCoordinatesQuery.cs" />
+    <Compile Include="Features\Geolocation\GoogleApiModels.cs" />
     <Compile Include="Features\Notifications\NotificationsConfiguration.cs" />
     <Compile Include="Features\Notifications\NotificationService.cs" />
     <Compile Include="Features\Users\AddOrUpdateUserCommand.cs" />
@@ -266,6 +269,8 @@
     <Compile Include="Features\Events\RemoveEventCommand.cs" />
     <Compile Include="Features\Events\EventApiModel.cs" />
     <Compile Include="Features\Events\EventController.cs" />
+    <Compile Include="Features\Geolocation\GetDistanceQuery.cs" />
+    <Compile Include="Features\Events\GetClosestEventsQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
