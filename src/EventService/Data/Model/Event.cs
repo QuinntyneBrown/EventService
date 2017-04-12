@@ -1,6 +1,5 @@
-using System;
-using System.Collections.Generic;
 using EventService.Data.Helpers;
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EventService.Data.Model
@@ -17,6 +16,8 @@ namespace EventService.Data.Model
         [Column(TypeName = "VARCHAR")]        
 		public string Name { get; set; }
 
+        public string ImageUrl { get; set; }
+
         public string Address { get; set; }
 
         public string City { get; set; }
@@ -27,10 +28,16 @@ namespace EventService.Data.Model
 
         public string Description { get; set; }
 
+        public string Abstract { get; set; }
+
         public double Longitude { get; set; }
 
         public double Latitude { get; set; }
         
+        public DateTime? Start { get; set; }
+
+        public DateTime? End { get; set; }
+
 		public DateTime CreatedOn { get; set; }
         
 		public DateTime LastModifiedOn { get; set; }

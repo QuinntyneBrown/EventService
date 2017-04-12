@@ -1,14 +1,14 @@
 using MediatR;
-using System;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using EventService.Features.Core;
+
 using static EventService.Features.Events.AddOrUpdateEventCommand;
 using static EventService.Features.Events.GetEventsQuery;
 using static EventService.Features.Events.GetEventByIdQuery;
 using static EventService.Features.Events.RemoveEventCommand;
+using static EventService.Features.Events.GetClosestEventsQuery;
 
 namespace EventService.Features.Events
 {
@@ -46,6 +46,17 @@ namespace EventService.Features.Events
         public async Task<IHttpActionResult> Get()
         {
             var request = new GetEventsRequest();
+            request.TenantUniqueId = Request.GetTenantUniqueId();
+            return Ok(await _mediator.Send(request));
+        }
+
+        [Route("getClosest")]
+        [AllowAnonymous]
+        [HttpGet]
+        [ResponseType(typeof(GetClosestEventsResponse))]
+        public async Task<IHttpActionResult> GetClosestEvents()
+        {
+            var request = new GetClosestEventsRequest();
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
         }

@@ -269,7 +269,6 @@
     <Compile Include="Features\Events\RemoveEventCommand.cs" />
     <Compile Include="Features\Events\EventApiModel.cs" />
     <Compile Include="Features\Events\EventController.cs" />
-    <Compile Include="Features\Geolocation\GetDistanceQuery.cs" />
     <Compile Include="Features\Events\GetClosestEventsQuery.cs" />
   </ItemGroup>
   <ItemGroup>

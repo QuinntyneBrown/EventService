@@ -16,7 +16,7 @@ namespace EventService.Migrations
 
             context.Roles.AddOrUpdate(x => x.Name, new Role()
             {
-                Name = Roles.PRODUCT
+                Name = Roles.CUSTOMER
             });
 
             context.Roles.AddOrUpdate(x => x.Name, new Role()
