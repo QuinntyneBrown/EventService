@@ -1,4 +1,5 @@
 export * from "./digital-assets";
+export * from "./events";
 export * from "./pagination";
 export * from "./router";
 export * from "./shared";

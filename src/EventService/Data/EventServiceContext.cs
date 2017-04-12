@@ -14,6 +14,7 @@ namespace EventService.Data
         DbSet<Role> Roles { get; set; }
         DbSet<Tenant> Tenants { get; set; }
         DbSet<DigitalAsset> DigitalAssets { get; set; }
+        DbSet<Event> Events { get; set; }
         Task<int> SaveChangesAsync();
     }
 
@@ -31,6 +32,7 @@ namespace EventService.Data
         public DbSet<Role> Roles { get; set; }
         public DbSet<Tenant> Tenants { get; set; }
         public DbSet<DigitalAsset> DigitalAssets { get; set; }
+        public DbSet<Event> Events { get; set; }
 
         public override int SaveChanges()
         {

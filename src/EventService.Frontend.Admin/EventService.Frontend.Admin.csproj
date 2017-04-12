@@ -232,6 +232,30 @@
     <Content Include="src\app\digital-assets\digital-asset-url-input.component.scss">
       <DependentUpon>digital-asset-url-input.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\app\events\event-edit-embed.component.html">
+      <DependentUpon>event-edit-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\events\event-edit-embed.component.scss">
+      <DependentUpon>event-edit-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\events\event-item-embed.component.html">
+      <DependentUpon>event-item-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\events\event-item-embed.component.scss">
+      <DependentUpon>event-item-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\events\event-list-embed.component.html">
+      <DependentUpon>event-list-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\events\event-list-embed.component.scss">
+      <DependentUpon>event-list-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\events\event-master-detail.component.html">
+      <DependentUpon>event-master-detail.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\events\event-master-detail.component.scss">
+      <DependentUpon>event-master-detail.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\app\shared\button.component.html">
       <DependentUpon>button.component.ts</DependentUpon>
     </Content>
@@ -432,6 +456,7 @@
     <TypeScriptCompile Include="src\app\utilities\fetch.ts" />
     <TypeScriptCompile Include="src\app\utilities\form-encode.ts" />
     <TypeScriptCompile Include="src\app\utilities\get-base-url.ts" />
+    <TypeScriptCompile Include="src\app\utilities\get-current-position-async.ts" />
     <TypeScriptCompile Include="src\app\utilities\guid.ts" />
     <TypeScriptCompile Include="src\app\utilities\http.ts" />
     <TypeScriptCompile Include="src\app\utilities\index.ts" />
@@ -470,6 +495,14 @@
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="src\app\app-router-outlet.component.ts" />
     <TypeScriptCompile Include="src\polyfills.ts" />
+    <TypeScriptCompile Include="src\app\events\event-edit-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\events\event-list-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\events\event-item-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\events\event-master-detail.component.ts" />
+    <TypeScriptCompile Include="src\app\events\event.actions.ts" />
+    <TypeScriptCompile Include="src\app\events\event.service.ts" />
+    <TypeScriptCompile Include="src\app\events\index.ts" />
+    <TypeScriptCompile Include="src\app\events\event.model.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

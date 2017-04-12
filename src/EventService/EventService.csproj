@@ -204,6 +204,7 @@
     <Compile Include="Features\Core\CacheProvider.cs" />
     <Compile Include="Features\Core\DateExtensions.cs" />
     <Compile Include="Features\Core\HandleError.cs" />
+    <Compile Include="Features\Core\HttpRequestMessageExtensions.cs" />
     <Compile Include="Features\Core\ICache.cs" />
     <Compile Include="Features\Core\ICacheProvider.cs" />
     <Compile Include="Features\Core\ILogger.cs" />
@@ -258,6 +259,13 @@
     <Compile Include="Data\Migrations\TenantConfiguration.cs" />
     <Compile Include="Features\Users\UserController.cs" />
     <Compile Include="Data\Model\DigitalAsset.cs" />
+    <Compile Include="Data\Model\Event.cs" />
+    <Compile Include="Features\Events\AddOrUpdateEventCommand.cs" />
+    <Compile Include="Features\Events\GetEventsQuery.cs" />
+    <Compile Include="Features\Events\GetEventByIdQuery.cs" />
+    <Compile Include="Features\Events\RemoveEventCommand.cs" />
+    <Compile Include="Features\Events\EventApiModel.cs" />
+    <Compile Include="Features\Events\EventController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
