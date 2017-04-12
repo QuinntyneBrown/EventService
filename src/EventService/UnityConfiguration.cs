@@ -15,7 +15,7 @@ namespace EventService
             var container = new UnityContainer();            
             container.AddMediator<UnityConfiguration>();
             container.RegisterInstance(AuthConfiguration.LazyConfig);
-            container.RegisterInstance(AmazonS3Configuration.LazyConfig);          
+            container.RegisterInstance(AzureBlobStorageConfiguration.LazyConfig);          
             return container;
         }
     }

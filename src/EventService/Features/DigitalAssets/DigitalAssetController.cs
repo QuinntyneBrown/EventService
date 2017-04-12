@@ -9,7 +9,7 @@ using System.Web.Http.Description;
 using System.Net.Http.Headers;
 
 using static EventService.Features.DigitalAssets.GetDigitalAssetByUniqueIdQuery;
-using static EventService.Features.DigitalAssets.AmazonS3UploadDigitalAssetCommand;
+using static EventService.Features.DigitalAssets.AzureBlobStorageDigitalAssetCommand;
 
 namespace EventService.Features.DigitalAssets
 {
@@ -75,7 +75,7 @@ namespace EventService.Features.DigitalAssets
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
             var user = await _userManager.GetUserAsync(User);            
             var provider = await Request.Content.ReadAsMultipartAsync(new InMemoryMultipartFormDataStreamProvider());            
-            return Ok(await _mediator.Send(new AmazonS3UploadDigitalAssetRequest() { Provider = provider, Folder = $"{user.Tenant.UniqueId}" }));
+            return Ok(await _mediator.Send(new AzureBlobStorageDigitalAssetRequest() { Provider = provider, Folder = $"{user.Tenant.UniqueId}" }));
         }
 
         protected readonly IMediator _mediator;

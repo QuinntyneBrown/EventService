@@ -59,6 +59,14 @@ namespace EventService.Features.Events
 
                 entity.Description = request.Event.Description;
 
+                entity.Abstract = request.Event.Abstract;
+
+                entity.Start = request.Event.Start;
+
+                entity.End = request.Event.End;
+
+                entity.ImageUrl = request.Event.ImageUrl;
+
                 await _context.SaveChangesAsync();
 
                 return new AddOrUpdateEventResponse();
