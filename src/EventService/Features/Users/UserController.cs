@@ -71,11 +71,11 @@ namespace EventService.Features.Users
         [HttpGet]
         [AllowAnonymous]
         [ResponseType(typeof(GetUserByUsernameResponse))]
-        public async Task<IHttpActionResult> Current([FromUri]GetUserByUsernameRequest request)
-        {
+        public async Task<IHttpActionResult> Current()
+        {            
             if (!User.Identity.IsAuthenticated)
                 return Ok();
-
+            var request = new GetUserByUsernameRequest();
             request.Username = User.Identity.Name;
             request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
             
