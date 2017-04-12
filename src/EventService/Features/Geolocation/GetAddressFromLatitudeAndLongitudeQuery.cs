@@ -1,11 +1,7 @@
 using MediatR;
-using EventService.Data;
-using EventService.Features.Core;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
-using System.Data.Entity;
 using System.Net.Http;
 
 namespace EventService.Features.Geolocation
@@ -36,18 +32,16 @@ namespace EventService.Features.Geolocation
                 var httpResponse = await _client.GetAsync($"http://maps.googleapis.com/maps/api/geocode/json?latlng={request.Latitude},{request.Longitude}&sensor=false");
                 var googleEncodeResponse = await httpResponse.Content.ReadAsAsync<GoogleEncodeResponse>();
                 var addressComponents = googleEncodeResponse.results.ElementAt(0).address_components;
-                var streetNumberAddressComponent = addressComponents.FirstOrDefault(x => x.types.Any(t => t == "street_number"));
-                var streetComponent = addressComponents.FirstOrDefault(x => x.types.Any(t => t == "route"));
-                var cityComponent = addressComponents.FirstOrDefault(x => x.types.Any(t => t == "locality"));
+                var streetAddress = addressComponents.First(x => x.types.Any(t => t == "street_number")).long_name;
+                var street = addressComponents.First(x => x.types.Any(t => t == "route")).long_name;
+                var city = addressComponents.First(x => x.types.Any(t => t == "locality")).long_name;
+
                 return new GetAddressFromLatitudeAndLongitudeResponse()
                 {
-                    Address = $"{streetNumberAddressComponent.short_name} {streetComponent.long_name}, {cityComponent.long_name}"
+                    Address = $"{streetAddress} {street}, {city}"
                 };
             }
-
             protected readonly HttpClient _client;
         }
-
     }
-
 }

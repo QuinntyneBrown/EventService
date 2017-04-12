@@ -2,6 +2,6 @@
     return new Promise(resolve => {
         navigator.geolocation.getCurrentPosition((position: Position) => {
             resolve(position.coords);
-        });
+        }, null, { enableHighAccuracy: true });
     });
 }

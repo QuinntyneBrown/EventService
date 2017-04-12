@@ -12,8 +12,7 @@ export class AppComponent extends HTMLElement {
     }
 
     connectedCallback() {        
-        this._storage.put({ name: TENANT_KEY, value: "97a6e0f5-14a5-4439-8939-dec460206d33" });
-        
+        this._storage.put({ name: TENANT_KEY, value: "97a6e0f5-14a5-4439-8939-dec460206d33" });        
         this.innerHTML = `<style>${styles}</style>${template}`;
         new AppRouterOutletComponent(this.querySelector(".router-outlet"));
     }

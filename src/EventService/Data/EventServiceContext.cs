@@ -70,6 +70,10 @@ namespace EventService.Data
                         m.ToTable("UserRoles");
                     });
 
+            modelBuilder.Entity<Event>()
+                        .HasOptional(e => e.EventLocation)
+                        .WithRequired(el => el.Event);
+
             var convention = new AttributeToTableAnnotationConvention<SoftDeleteAttribute, string>(
                 "SoftDeleteColumnName",
                 (type, attributes) => attributes.Single().ColumnName);

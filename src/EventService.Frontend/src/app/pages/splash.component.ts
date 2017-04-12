@@ -9,12 +9,9 @@ export class SplashComponent extends HTMLElement {
         private _apiService: ApiService = ApiService.Instance
     ) {
         super();
+        this.onGetNearByEvents = this.onGetNearByEvents.bind(this);
     }
-
-    static get observedAttributes () {
-        return [];
-    }
-
+    
     connectedCallback() {
         this.innerHTML = `<style>${styles}</style> ${template}`;
         this._bind();
@@ -22,28 +19,31 @@ export class SplashComponent extends HTMLElement {
     }
 
     private async _bind() {
-        var coordinates = await getCurrentPositionAsync();
-        var address = await this._apiService.getAddress({
+        const coordinates = await getCurrentPositionAsync();        
+        const address = await this._apiService.getAddress({
             longitude: coordinates.longitude,
             latitude: coordinates.latitude
+        });        
+        this._addressInputElement.value = address;
+    }
+
+    public async onGetNearByEvents() {
+        var closeEvents = await this._apiService.getClosetEvents({
+            address: this._addressInputElement.value
         });
-        alert(address);
     }
 
     private _setEventListeners() {
-
+        this._getNearByEventsButtonElement.addEventListener("click", this.onGetNearByEvents);
     }
 
     disconnectedCallback() {
-
+        this._getNearByEventsButtonElement.removeEventListener("click", this.onGetNearByEvents);
     }
 
-    attributeChangedCallback (name, oldValue, newValue) {
-        switch (name) {
-            default:
-                break;
-        }
-    }
+    private get _addressInputElement(): HTMLInputElement { return this.querySelector(".address") as HTMLInputElement; }
+
+    private get _getNearByEventsButtonElement(): HTMLElement { return this.querySelector("ce-button") as HTMLElement; }
 }
 
 customElements.define(`ce-splash`,SplashComponent);

@@ -47,23 +47,24 @@ namespace EventService.Features.Events
 
             model.Name = entity.Name;
 
-            model.Address = entity.Address;
-
-            model.City = entity.City;
-
-            model.PostalCode = entity.PostalCode;
-
             model.Description = entity.Description;
 
             model.Abstract = entity.Abstract;
 
-            model.Longitude = entity.Longitude;
-
-            model.Latitude = entity.Latitude;
-
             model.Start = entity.Start;
 
             model.End = entity.End;
+
+            model.Address = entity.EventLocation.Address;
+
+            model.City = entity.EventLocation.City;
+
+            model.PostalCode = entity.EventLocation.PostalCode;
+
+            model.Longitude = entity.EventLocation.Longitude;
+
+            model.Latitude = entity.EventLocation.Latitude;
+
 
             return model;
         }
@@ -71,7 +72,7 @@ namespace EventService.Features.Events
         public static EventApiModel FromEventAndOrigin(Event entity, double originLongitude, double originLatitude) {
             var model = FromEvent(entity);
             var origin = new GeoCoordinate(originLatitude, originLongitude);
-            var destination = new GeoCoordinate(entity.Latitude, entity.Longitude);
+            var destination = new GeoCoordinate(entity.EventLocation.Latitude, entity.EventLocation.Longitude);
             model.Distance = origin.GetDistanceTo(destination);
             return model;
         }

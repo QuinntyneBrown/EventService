@@ -401,12 +401,14 @@
     <TypeScriptCompile Include="src\app\utilities\fetch.ts" />
     <TypeScriptCompile Include="src\app\utilities\form-encode.ts" />
     <TypeScriptCompile Include="src\app\utilities\get-current-position-async.ts" />
+    <TypeScriptCompile Include="src\app\utilities\get-ip-info-async.ts" />
     <TypeScriptCompile Include="src\app\utilities\guid.ts" />
     <TypeScriptCompile Include="src\app\utilities\http.ts" />
     <TypeScriptCompile Include="src\app\utilities\index.ts" />
     <TypeScriptCompile Include="src\app\utilities\insert-after.ts" />
     <TypeScriptCompile Include="src\app\utilities\is-array.ts" />
     <TypeScriptCompile Include="src\app\utilities\is-numeric.ts" />
+    <TypeScriptCompile Include="src\app\utilities\jsonp.ts" />
     <TypeScriptCompile Include="src\app\utilities\load-style.ts" />
     <TypeScriptCompile Include="src\app\utilities\log.ts" />
     <TypeScriptCompile Include="src\app\utilities\logger.ts" />

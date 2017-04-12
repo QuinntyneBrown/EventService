@@ -18,21 +18,9 @@ namespace EventService.Data.Model
 
         public string ImageUrl { get; set; }
 
-        public string Address { get; set; }
-
-        public string City { get; set; }
-
-        public string Province { get; set; }
-
-        public string PostalCode { get; set; }
-
         public string Description { get; set; }
 
         public string Abstract { get; set; }
-
-        public double Longitude { get; set; }
-
-        public double Latitude { get; set; }
         
         public DateTime? Start { get; set; }
 
@@ -49,5 +37,7 @@ namespace EventService.Data.Model
 		public bool IsDeleted { get; set; }
 
         public virtual Tenant Tenant { get; set; }
+
+        public virtual EventLocation EventLocation { get; set; }
     }
 }

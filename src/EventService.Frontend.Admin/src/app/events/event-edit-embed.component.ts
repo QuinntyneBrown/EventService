@@ -29,7 +29,14 @@ export class EventEditEmbedComponent extends HTMLElement {
         this._titleElement.textContent = this.event ? "Edit Event": "Create Event";
 
         if (this.event) {                
-            this._nameInputElement.value = this.event.name;  
+            this._nameInputElement.value = this.event.name;
+            this._imageUrlInputElement.value = this.event.imageUrl;
+            this._abstractInputElement.value = this.event.abstract;
+            this._descriptionInputElement.value = this.event.description;
+            this._addressInputElement.value = this.event.address;
+            this._cityInputElement.value = this.event.city;
+            this._provinceInputElement.value = this.event.province;
+            this._postalCodeInputElement.value = this.event.postalCode;              
         } else {
             this._deleteButtonElement.style.display = "none";
         }     
@@ -48,7 +55,16 @@ export class EventEditEmbedComponent extends HTMLElement {
     public onSave() {
         const event = {
             id: this.event != null ? this.event.id : null,
-            name: this._nameInputElement.value
+            name: this._nameInputElement.value,
+            imageUrl: this._imageUrlInputElement.value,
+            description: this._descriptionInputElement.value,
+            abstract: this._abstractInputElement.value,
+            start: this._startInputElement.value,
+            end: this._endInputElement.value,
+            address: this._addressInputElement.value,
+            city: this._cityInputElement.value,
+            province: this._provinceInputElement.value,
+            postalCode: this._postalCodeInputElement.value
         } as Event;
         
         this.dispatchEvent(new EventAdd(event));            
@@ -73,6 +89,15 @@ export class EventEditEmbedComponent extends HTMLElement {
                 if (this.parentNode) {
                     this.eventId = this.event.id;
                     this._nameInputElement.value = this.event.name != undefined ? this.event.name : "";
+                    this._addressInputElement.value = this.event.address != undefined ? this.event.address : "";
+                    this._cityInputElement.value = this.event.city != undefined ? this.event.city : "";
+                    this._provinceInputElement.value = this.event.province != undefined ? this.event.province : "";
+                    this._postalCodeInputElement.value = this.event.postalCode != undefined ? this.event.postalCode : "";
+                    this._imageUrlInputElement.value = this.event.imageUrl != undefined ? this.event.imageUrl : "";
+                    this._startInputElement.value = this.event.start != undefined ? this.event.start : "";
+                    this._endInputElement.value = this.event.end != undefined ? this.event.end : "";
+                    this._abstractInputElement.value = this.event.abstract != undefined ? this.event.abstract : "";
+                    this._descriptionInputElement.value = this.event.description != undefined ? this.event.description : "";
                     this._titleElement.textContent = this.eventId ? "Edit Event" : "Create Event";
                 }
                 break;
@@ -80,12 +105,35 @@ export class EventEditEmbedComponent extends HTMLElement {
     }
 
     public eventId: any;
+
     public event: Event;
     
     private get _titleElement(): HTMLElement { return this.querySelector("h2") as HTMLElement; }
+
     private get _saveButtonElement(): HTMLElement { return this.querySelector(".save-button") as HTMLElement };
+
     private get _deleteButtonElement(): HTMLElement { return this.querySelector(".delete-button") as HTMLElement };
-    private get _nameInputElement(): HTMLInputElement { return this.querySelector(".event-name") as HTMLInputElement;}
+
+    private get _nameInputElement(): HTMLInputElement { return this.querySelector(".event-name") as HTMLInputElement; }
+
+    private get _addressInputElement(): HTMLInputElement { return this.querySelector(".event-address") as HTMLInputElement; }
+
+    private get _cityInputElement(): HTMLInputElement { return this.querySelector(".event-city") as HTMLInputElement; }
+
+    private get _provinceInputElement(): HTMLInputElement { return this.querySelector(".event-province") as HTMLInputElement; }
+
+    private get _postalCodeInputElement(): HTMLInputElement { return this.querySelector(".event-postal-code") as HTMLInputElement; }
+
+    private get _startInputElement(): HTMLInputElement { return this.querySelector(".event-start") as HTMLInputElement; }
+
+    private get _endInputElement(): HTMLInputElement { return this.querySelector(".event-end") as HTMLInputElement; }
+
+    private get _imageUrlInputElement(): HTMLInputElement { return this.querySelector(".event-image-url") as HTMLInputElement; }
+
+    private get _descriptionInputElement(): HTMLInputElement { return this.querySelector(".event-description") as HTMLInputElement; }
+
+    private get _abstractInputElement(): HTMLInputElement { return this.querySelector(".event-abstract") as HTMLInputElement; }
+
 }
 
 customElements.define(`ce-event-edit-embed`,EventEditEmbedComponent);

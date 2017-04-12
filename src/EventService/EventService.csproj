@@ -299,6 +299,8 @@
     <Compile Include="Features\Events\GetClosestEventsQuery.cs" />
     <Compile Include="Features\Geolocation\GetAddressFromLatitudeAndLongitudeQuery.cs" />
     <Compile Include="Features\Geolocation\GeolocationController.cs" />
+    <Compile Include="Data\Model\EventLocation.cs" />
+    <Compile Include="Data\Model\Location.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
