@@ -1,8 +1,13 @@
+import { ApiService } from "../shared";
+import { getCurrentPositionAsync } from "../utilities";
+
 const template = require("./splash.component.html");
 const styles = require("./splash.component.scss");
 
 export class SplashComponent extends HTMLElement {
-    constructor() {
+    constructor(
+        private _apiService: ApiService = ApiService.Instance
+    ) {
         super();
     }
 
@@ -17,7 +22,12 @@ export class SplashComponent extends HTMLElement {
     }
 
     private async _bind() {
-
+        var coordinates = await getCurrentPositionAsync();
+        var address = await this._apiService.getAddress({
+            longitude: coordinates.longitude,
+            latitude: coordinates.latitude
+        });
+        alert(address);
     }
 
     private _setEventListeners() {

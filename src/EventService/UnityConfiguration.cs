@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using EventService.Features.DigitalAssets;
+using System.Net.Http;
 
 namespace EventService
 {
@@ -14,6 +15,11 @@ namespace EventService
         {
             var container = new UnityContainer();            
             container.AddMediator<UnityConfiguration>();
+
+            container.RegisterType<HttpClient>(
+                new ContainerControlledLifetimeManager(),
+                new InjectionFactory(x => new HttpClient()));
+
             container.RegisterInstance(AuthConfiguration.LazyConfig);
             container.RegisterInstance(AzureBlobStorageConfiguration.LazyConfig);          
             return container;

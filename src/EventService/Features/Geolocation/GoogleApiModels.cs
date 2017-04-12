@@ -50,7 +50,7 @@ namespace EventService.Features.Geolocation
         public List<string> types { get; set; }
     }
 
-    public class GetLongLatGoogleResponse
+    public class GoogleEncodeResponse
     {
         public List<Result> results { get; set; }
         public string status { get; set; }

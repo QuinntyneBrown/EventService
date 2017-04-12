@@ -28,7 +28,6 @@ export * from "./ruler";
 export * from "./set-opacity-async";
 export * from "./space";
 export * from "./storage";
-export * from "./store.specs";
 export * from "./store";
 export * from "./target-value";
 export * from "./template";

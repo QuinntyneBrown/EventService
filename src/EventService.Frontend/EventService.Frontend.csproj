@@ -193,6 +193,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="azureBlobStorageConfiguration.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
     <Content Include="index.html" />
     <Content Include="lib\moment.min.js" />
     <Content Include="lib\native-shim.js" />
@@ -416,7 +419,6 @@
     <TypeScriptCompile Include="src\app\utilities\set-opacity-async.ts" />
     <TypeScriptCompile Include="src\app\utilities\space.ts" />
     <TypeScriptCompile Include="src\app\utilities\storage.ts" />
-    <TypeScriptCompile Include="src\app\utilities\store.specs.ts" />
     <TypeScriptCompile Include="src\app\utilities\store.ts" />
     <TypeScriptCompile Include="src\app\utilities\target-value.ts" />
     <TypeScriptCompile Include="src\app\utilities\template.ts" />
@@ -428,8 +430,8 @@
     <TypeScriptCompile Include="src\main.ts" />
     <TypeScriptCompile Include="src\app\app-router-outlet.component.ts" />
     <TypeScriptCompile Include="src\polyfills.ts" />
-    <TypeScriptCompile Include="src\app\components\index.ts" />
     <TypeScriptCompile Include="src\app\pages\splash.component.ts" />
+    <TypeScriptCompile Include="src\app\models\event.model.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

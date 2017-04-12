@@ -27,6 +27,7 @@ namespace EventService
             app.MapSignalR();
 
             app.Use(typeof(StatusMiddleware));
+            app.Use(typeof(TenantMiddleware));
 
             config.Filters.Add(new HandleErrorAttribute(container.Resolve<ILoggerFactory>()));
 

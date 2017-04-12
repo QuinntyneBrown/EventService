@@ -1,5 +1,5 @@
 import { fetch } from "../utilities";
-import { Question, Survey } from "../models";
+
 import { environment } from "../environment";
 
 export class ApiService {
@@ -12,15 +12,13 @@ export class ApiService {
         return this._instance;
     }
 
-    public getSurvey(): Promise<Survey> {        
-        return this._fetch({ url: `/api/survey/getbyuniqueId?uniqueId=${environment.surveyUniqueId}`, authRequired: false }).then((results: string) => {
-            return (JSON.parse(results) as { survey: Survey }).survey;
+    public getAddress(options: {
+        longitude: number,
+        latitude: number
+    }): Promise<string> {         
+        return this._fetch({ url: `/api/geolocation/getAddress?longitude=${options.longitude}&latitude=${options.latitude}`, authRequired: false }).then((results: string) => {
+            return (JSON.parse(results) as { address: string }).address as string;
         });
     }   
 
-    public addSurveyResult(surveyResult): Promise<any> {
-        return this._fetch({ url: `/api/surveyresult/add`, authRequired: false, method: "POST", data: { surveyResult, surveyUniqueId:environment.surveyUniqueId } }).then((results: string) => {
-            return true;
-        });
-    } 
 }

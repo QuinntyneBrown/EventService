@@ -241,6 +241,7 @@
     <Compile Include="Features\Core\RateLimit.cs" />
     <Compile Include="Features\Core\StatusMiddleware.cs" />
     <Compile Include="Features\Core\StringExtensions.cs" />
+    <Compile Include="Features\Core\TenantMiddleware.cs" />
     <Compile Include="Features\Core\WebApiUnityActionFilterProvider.cs" />
     <Compile Include="Features\DigitalAssets\AddOrUpdateDigitalAssetCommand.cs" />
     <Compile Include="Features\DigitalAssets\AmazonS3Configuration.cs" />
@@ -296,6 +297,8 @@
     <Compile Include="Features\Events\EventApiModel.cs" />
     <Compile Include="Features\Events\EventController.cs" />
     <Compile Include="Features\Events\GetClosestEventsQuery.cs" />
+    <Compile Include="Features\Geolocation\GetAddressFromLatitudeAndLongitudeQuery.cs" />
+    <Compile Include="Features\Geolocation\GeolocationController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

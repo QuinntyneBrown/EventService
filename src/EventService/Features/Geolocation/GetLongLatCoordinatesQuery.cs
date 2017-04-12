@@ -28,7 +28,7 @@ namespace EventService.Features.Geolocation
             public async Task<GetLongLatCoordinatesResponse> Handle(GetLongLatCoordinatesRequest request)
             {                
                 var httpResponse = await _client.GetAsync($"http://maps.googleapis.com/maps/api/geocode/json?address={request.Address}&sensor=false");
-                var googleResponse = await httpResponse.Content.ReadAsAsync<GetLongLatGoogleResponse>();
+                var googleResponse = await httpResponse.Content.ReadAsAsync<GoogleEncodeResponse>();
 
                 return new GetLongLatCoordinatesResponse()
                 {
