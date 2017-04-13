@@ -54,9 +54,8 @@ namespace EventService.Features.Events
         [AllowAnonymous]
         [HttpGet]
         [ResponseType(typeof(GetClosestEventsResponse))]
-        public async Task<IHttpActionResult> GetClosestEvents()
-        {
-            var request = new GetClosestEventsRequest();
+        public async Task<IHttpActionResult> GetClosestEvents([FromUri]GetClosestEventsRequest request)
+        {            
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
         }

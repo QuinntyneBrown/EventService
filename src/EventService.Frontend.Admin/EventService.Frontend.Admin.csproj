@@ -515,7 +515,6 @@
     <TypeScriptCompile Include="src\app\events\event-location.model.ts" />
     <TypeScriptCompile Include="src\app\locations\index.ts" />
     <TypeScriptCompile Include="src\app\locations\location.model.ts" />
-    <TypeScriptCompile Include="src\app\locations\location.actions.ts" />
     <TypeScriptCompile Include="src\app\locations\location-edit-embed.component.ts" />
   </ItemGroup>
   <ItemGroup>

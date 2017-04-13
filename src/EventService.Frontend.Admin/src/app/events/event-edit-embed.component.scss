@@ -2,9 +2,18 @@ ce-event-edit-embed {
 
     display:block;
     margin-bottom:40px;
+    
+    .event-abstract,
+    .event-description {
+        height:200px;
+    }
 
     h2 {
         cursor:pointer;
+    }
+
+    ce-tabs {
+        margin-bottom:30px;
     }
 }
 

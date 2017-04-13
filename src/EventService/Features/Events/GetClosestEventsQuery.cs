@@ -46,11 +46,13 @@ namespace EventService.Features.Events
                 var longitudeAndLatitude = await _mediator.Send(
                     new GetLongLatCoordinatesRequest() { Address = request.Address });
 
+                var closeEvents = events.Select(x => ClosetEventApiModel.FromEventAndOriginCoordinates(x, longitudeAndLatitude.Longitude, longitudeAndLatitude.Latitude))
+                    .OrderBy(x => x.EventLocation.Distance)
+                    .ToList();
+
                 return new GetClosestEventsResponse()
                 {
-                    Events = events.Select(x => ClosetEventApiModel.FromEventAndOriginCoordinates(x, longitudeAndLatitude.Longitude, longitudeAndLatitude.Latitude))
-                    .OrderBy( x => x.EventLocation.Distance)
-                    .ToList()
+                    Events = closeEvents
                 };
             }
 

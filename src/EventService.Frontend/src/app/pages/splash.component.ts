@@ -27,7 +27,7 @@ export class SplashComponent extends HTMLElement {
         this._addressInputElement.value = address;
     }
 
-    public async onGetNearByEvents() {
+    public async onGetNearByEvents() {        
         var closeEvents = await this._apiService.getClosetEvents({
             address: this._addressInputElement.value
         });

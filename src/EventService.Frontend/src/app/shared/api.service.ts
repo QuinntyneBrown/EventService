@@ -23,7 +23,9 @@ export class ApiService {
 
     public getClosetEvents(options: { address: string }): Promise<Array<any>> {
         return this._fetch({ url: `/api/event/getClosest?address=${options.address}`, authRequired: false }).then((results: string) => {
-            return (JSON.parse(results) as { closeEvents: Array<any> }).closeEvents as Array<any>;
+            alert(results);
+
+            return (JSON.parse(results) as { events: Array<any> }).events as Array<any>;
         });
     }  
 }

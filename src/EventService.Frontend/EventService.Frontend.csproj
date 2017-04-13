@@ -211,6 +211,18 @@
     <Content Include="src\app\app.component.scss">
       <DependentUpon>app.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\app\components\event.component.html">
+      <DependentUpon>event.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\components\event.component.scss">
+      <DependentUpon>event.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\components\events.component.html">
+      <DependentUpon>events.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\components\events.component.scss">
+      <DependentUpon>events.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\app\errors\error.component.html">
       <DependentUpon>error.component.ts</DependentUpon>
     </Content>
@@ -434,6 +446,10 @@
     <TypeScriptCompile Include="src\polyfills.ts" />
     <TypeScriptCompile Include="src\app\pages\splash.component.ts" />
     <TypeScriptCompile Include="src\app\models\event.model.ts" />
+    <TypeScriptCompile Include="src\app\components\events.component.ts" />
+    <TypeScriptCompile Include="src\app\components\event.component.ts" />
+    <TypeScriptCompile Include="src\app\components\index.ts" />
+    <TypeScriptCompile Include="src\app\models\event-location.model.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

@@ -23,10 +23,11 @@ namespace EventService.Features.Events
 
         public class AddOrUpdateEventHandler : IAsyncRequestHandler<AddOrUpdateEventRequest, AddOrUpdateEventResponse>
         {
-            public AddOrUpdateEventHandler(EventServiceContext context, ICache cache)
+            public AddOrUpdateEventHandler(EventServiceContext context, ICache cache, IMediator mediator)
             {
                 _context = context;
                 _cache = cache;
+                _mediator = mediator;
             }
 
             public async Task<AddOrUpdateEventResponse> Handle(AddOrUpdateEventRequest request)
@@ -36,7 +37,7 @@ namespace EventService.Features.Events
                     .Include(x=>x.EventLocation)
                     .SingleOrDefaultAsync(x => x.Id == request.Event.Id && x.Tenant.UniqueId == request.TenantUniqueId);
 
-                var tenant = await _context.Tenants.SingleAsync(x => x.UniqueId == request.TenantUniqueId);
+                var tenant = await _context.Tenants.SingleOrDefaultAsync(x => x.UniqueId == request.TenantUniqueId);
 
                 if (entity == null) {                    
                     _context.Events.Add(entity = new Event() { TenantId = tenant.Id });
@@ -45,7 +46,11 @@ namespace EventService.Features.Events
                 entity.EventLocation = entity.EventLocation ?? new EventLocation() { TenantId = tenant.Id };
 
                 var longLatResponse = await _mediator.Send(new GetLongLatCoordinatesRequest() { Address = $"{request.Event.EventLocation.Address},{request.Event.EventLocation.City},{request.Event.EventLocation.Province},{request.Event.EventLocation.PostalCode}" });
-                
+
+                request.Event.EventLocation.Longitude = longLatResponse.Longitude;
+
+                request.Event.EventLocation.Latitude = longLatResponse.Latitude;
+
                 entity.Name = request.Event.Name;
 
                 entity.Description = request.Event.Description;
@@ -65,8 +70,8 @@ namespace EventService.Features.Events
                 return new AddOrUpdateEventResponse();
             }
 
-            private readonly EventServiceContext _context;
-            private readonly ICache _cache;
+            protected readonly EventServiceContext _context;
+            protected readonly ICache _cache;
             protected readonly IMediator _mediator;
         }
     }
