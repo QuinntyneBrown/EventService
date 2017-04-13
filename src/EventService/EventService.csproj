@@ -301,8 +301,11 @@
     <Compile Include="Features\Geolocation\GeolocationController.cs" />
     <Compile Include="Data\Model\EventLocation.cs" />
     <Compile Include="Data\Model\Location.cs" />
+    <Compile Include="Features\Locations\LocationApiModel.cs" />
+    <Compile Include="Features\Locations\RelativeLocationApiModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Features\Locations\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
