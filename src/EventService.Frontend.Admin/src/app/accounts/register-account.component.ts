@@ -1,7 +1,9 @@
-const template = require("./event.component.html");
-const styles = require("./event.component.scss");
+import { AccountService } from "./account.service";
 
-export class EventComponent extends HTMLElement {
+const template = require("./register-account.component.html");
+const styles = require("./register-account.component.scss");
+
+export class RegisterAccountComponent extends HTMLElement {
     constructor() {
         super();
     }
@@ -28,6 +30,10 @@ export class EventComponent extends HTMLElement {
 
     }
 
+    onRegister() {
+
+    }
+
     attributeChangedCallback (name, oldValue, newValue) {
         switch (name) {
             default:
@@ -36,4 +42,4 @@ export class EventComponent extends HTMLElement {
     }
 }
 
-customElements.define(`ce-event`,EventComponent);
+customElements.define(`ce-register-account`,RegisterAccountComponent);

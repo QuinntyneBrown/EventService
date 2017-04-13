@@ -9,11 +9,10 @@ export class AppRouterOutletComponent extends RouterOutlet {
     connectedCallback() {
         this.setRoutes([
             { path: "/", name: "event-master-detail", authRequired: true },
-
+            { path: "/register", name: "account-register" },
             { path: "/login", name: "login" },
             { path: "/error", name: "error" },
             { path: "*", name: "not-found" }
-
         ] as any);
 
         this.use(new AuthorizedRouteMiddleware());

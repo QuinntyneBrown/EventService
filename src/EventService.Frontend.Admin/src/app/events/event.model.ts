@@ -5,6 +5,8 @@ export class Event {
 
     public name: string;
 
+    public url: string;
+
     public imageUrl: string;
 
     public description: string;

@@ -4,6 +4,8 @@ namespace EventService.Features.Locations
 {
     public class LocationApiModel
     {
+        public string Name { get; set; }
+
         public string Address { get; set; }
 
         public string City { get; set; }
@@ -20,6 +22,8 @@ namespace EventService.Features.Locations
             TModel : LocationApiModel, new()
         {
             var model = new TModel();
+
+            model.Name = location.Name;
 
             model.Address = location.Address;
 
@@ -38,6 +42,8 @@ namespace EventService.Features.Locations
 
         public void ToLocation(Location location)
         {
+            location.Name = Name;
+
             location.Address = Address;
 
             location.City = City;

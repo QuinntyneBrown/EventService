@@ -3,7 +3,7 @@
     public class Roles
     {
         public static string SYSTEM = "[Roles] System";
-        public static string CUSTOMER = "[Roles] Customer";
+        public static string ACCOUNT_HOLDER = "[Roles] Account Holder";
         public static string DEVELOPMENT = "[Roles] Development";
     }
 }

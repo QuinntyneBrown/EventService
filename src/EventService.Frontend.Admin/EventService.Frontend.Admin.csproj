@@ -205,6 +205,36 @@
     <Content Include="lib\rome.min.css" />
     <Content Include="lib\rome.min.js" />
     <Content Include="packages.config" />
+    <Content Include="src\app\accounts\account-edit-embed.component.html">
+      <DependentUpon>account-edit-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\accounts\account-edit-embed.component.scss">
+      <DependentUpon>account-edit-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\accounts\account-item-embed.component.html">
+      <DependentUpon>account-item-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\accounts\account-item-embed.component.scss">
+      <DependentUpon>account-item-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\accounts\account-list-embed.component.html">
+      <DependentUpon>account-list-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\accounts\account-list-embed.component.scss">
+      <DependentUpon>account-list-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\accounts\account-master-detail.component.html">
+      <DependentUpon>account-master-detail.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\accounts\account-master-detail.component.scss">
+      <DependentUpon>account-master-detail.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\accounts\register-account.component.html">
+      <DependentUpon>register-account.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\accounts\register-account.component.scss">
+      <DependentUpon>register-account.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\app\app.component.html">
       <DependentUpon>app.component.ts</DependentUpon>
     </Content>
@@ -264,6 +294,30 @@
     </Content>
     <Content Include="src\app\locations\location-edit-embed.component.scss">
       <DependentUpon>location-edit-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\profiles\profile-edit-embed.component.html">
+      <DependentUpon>profile-edit-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\profiles\profile-edit-embed.component.scss">
+      <DependentUpon>profile-edit-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\profiles\profile-item-embed.component.html">
+      <DependentUpon>profile-item-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\profiles\profile-item-embed.component.scss">
+      <DependentUpon>profile-item-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\profiles\profile-list-embed.component.html">
+      <DependentUpon>profile-list-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\profiles\profile-list-embed.component.scss">
+      <DependentUpon>profile-list-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\profiles\profile-master-detail.component.html">
+      <DependentUpon>profile-master-detail.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\profiles\profile-master-detail.component.scss">
+      <DependentUpon>profile-master-detail.component.ts</DependentUpon>
     </Content>
     <Content Include="src\app\shared\button.component.html">
       <DependentUpon>button.component.ts</DependentUpon>
@@ -516,6 +570,23 @@
     <TypeScriptCompile Include="src\app\locations\index.ts" />
     <TypeScriptCompile Include="src\app\locations\location.model.ts" />
     <TypeScriptCompile Include="src\app\locations\location-edit-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\accounts\account-edit-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\accounts\account-list-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\accounts\account-item-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\accounts\account-master-detail.component.ts" />
+    <TypeScriptCompile Include="src\app\accounts\account.actions.ts" />
+    <TypeScriptCompile Include="src\app\accounts\account.service.ts" />
+    <TypeScriptCompile Include="src\app\accounts\index.ts" />
+    <TypeScriptCompile Include="src\app\accounts\account.model.ts" />
+    <TypeScriptCompile Include="src\app\profiles\profile-edit-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\profiles\profile-list-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\profiles\profile-item-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\profiles\profile-master-detail.component.ts" />
+    <TypeScriptCompile Include="src\app\profiles\profile.actions.ts" />
+    <TypeScriptCompile Include="src\app\profiles\profile.service.ts" />
+    <TypeScriptCompile Include="src\app\profiles\index.ts" />
+    <TypeScriptCompile Include="src\app\profiles\profile.model.ts" />
+    <TypeScriptCompile Include="src\app\accounts\register-account.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

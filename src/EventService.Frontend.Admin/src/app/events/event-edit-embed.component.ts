@@ -16,7 +16,8 @@ export class EventEditEmbedComponent extends HTMLElement {
     static get observedAttributes() {
         return [
             "event",
-            "event-id"
+            "event-id",
+            "tab-index"
         ];
     }
     
@@ -27,11 +28,15 @@ export class EventEditEmbedComponent extends HTMLElement {
     }
     
     private async _bind() {
-        this._titleElement.textContent = this.event ? "Edit Event": "Create Event";
+        this._titleElement.textContent = this.event ? `Edit Event: ${this.event.name}`: "Create Event";
         this._abstractEditor = new EditorComponent(this._abstractElement);
         this._descriptionEditor = new EditorComponent(this._descriptionElement);
         this._startDatePicker = rome(this._startInputElement);
         this._endDatePicker = rome(this._endInputElement);
+
+        
+        if (this._customTabIndex != undefined)
+            this._tabsElement.setAttribute("custom-tab-index", this._customTabIndex);
 
         if (this.event) {                
             this._nameInputElement.value = this.event.name;
@@ -41,6 +46,7 @@ export class EventEditEmbedComponent extends HTMLElement {
             this._startInputElement.value = this.event.start;
             this._endInputElement.value = this.event.end;             
             this._locationEditEmbedElement.value = this.event.eventLocation;
+            this._urlInputElement.value = this.event.url;
         } else {
             this._deleteButtonElement.style.display = "none";            
         }     
@@ -49,18 +55,25 @@ export class EventEditEmbedComponent extends HTMLElement {
     private _setEventListeners() {
         this._saveButtonElement.addEventListener("click", this.onSave);
         this._deleteButtonElement.addEventListener("click", this.onDelete);
+        this._createEventElement.addEventListener("click", this.onCreateClick);
 
     }
 
     private disconnectedCallback() {
         this._saveButtonElement.removeEventListener("click", this.onSave);
         this._deleteButtonElement.removeEventListener("click", this.onDelete);
+        this._createEventElement.removeEventListener("click", this.onCreateClick);
+    }
+
+    public onCreateClick() {
+        this.dispatchEvent(new EventEdit(new Event()));
     }
     
     public onSave() {
         
         const event = {
             id: this.event != null ? this.event.id : null,
+            url: this._urlInputElement.value,
             name: this._nameInputElement.value,
             imageUrl: this._imageUrlInputElement.value,
             description: this._descriptionEditor.text,
@@ -87,18 +100,24 @@ export class EventEditEmbedComponent extends HTMLElement {
             case "event-id":
                 this.eventId = newValue;
                 break;
-            case "event":
+            case "event":                
                 this.event = JSON.parse(newValue);
                 if (this.parentNode) {
                     this.eventId = this.event.id;
                     this._nameInputElement.value = this.event.name != undefined ? this.event.name : "";
                     this._imageUrlInputElement.value = this.event.imageUrl != undefined ? this.event.imageUrl : "";
+                    this._urlInputElement.value = this.event.url != undefined ? this.event.url : "";
                     this._startInputElement.value = this.event.start != undefined ? this.event.start : "";
                     this._endInputElement.value = this.event.end != undefined ? this.event.end : "";
                     this._abstractEditor.setHTML(this.event.abstract != undefined ? this.event.abstract : "");
                     this._descriptionEditor.setHTML(this.event.description != undefined ? this.event.description : "");
-                    this._titleElement.textContent = this.eventId ? "Edit Event" : "Create Event";
+                    this._locationEditEmbedElement.value = this.event.eventLocation != undefined ? this.event.eventLocation : new Location();
+                    this._titleElement.textContent = this.eventId ? `Edit Event: ${this.event.name}` : "Create Event";
                 }
+                break;
+
+            case "tab-index":
+                this._customTabIndex = newValue;
                 break;
         }           
     }
@@ -107,6 +126,8 @@ export class EventEditEmbedComponent extends HTMLElement {
 
     public event: Event;
 
+    private _customTabIndex:any;
+
     private _descriptionEditor: EditorComponent;
 
     private _abstractEditor: EditorComponent;
@@ -114,6 +135,8 @@ export class EventEditEmbedComponent extends HTMLElement {
     private _startDatePicker;
 
     private _endDatePicker;
+
+    private get _tabsElement(): HTMLElement { return this.querySelector("ce-tabs") as HTMLElement; }
     
     private get _titleElement(): HTMLElement { return this.querySelector("h2") as HTMLElement; }
 
@@ -127,6 +150,8 @@ export class EventEditEmbedComponent extends HTMLElement {
 
     private get _endInputElement(): HTMLInputElement { return this.querySelector(".event-end") as HTMLInputElement; }
 
+    private get _urlInputElement(): HTMLInputElement { return this.querySelector(".event-url") as HTMLInputElement; }
+
     private get _imageUrlInputElement(): HTMLInputElement { return this.querySelector(".event-image-url") as HTMLInputElement; }
 
     private get _descriptionElement(): HTMLElement { return this.querySelector(".event-description") as HTMLElement; }
@@ -134,6 +159,9 @@ export class EventEditEmbedComponent extends HTMLElement {
     private get _abstractElement(): HTMLElement { return this.querySelector(".event-abstract") as HTMLElement; }
 
     private get _locationEditEmbedElement(): any { return this.querySelector("ce-location-edit-embed") as any; }
+
+    private get _createEventElement(): HTMLElement { return this.querySelector(".create-event") as HTMLElement; }
+
 }
 
 customElements.define(`ce-event-edit-embed`,EventEditEmbedComponent);

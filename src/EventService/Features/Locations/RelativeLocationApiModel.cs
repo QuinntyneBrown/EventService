@@ -15,9 +15,13 @@ namespace EventService.Features.Locations
             TModel : RelativeLocationApiModel, new()
         {
             var model = LocationApiModel.FromLocation<TModel>(location);
+
             var origin = new GeoCoordinate(originLatitude, originLongitude);
+
             var destination = new GeoCoordinate(location.Latitude, location.Longitude);
+
             model.Distance = origin.GetDistanceTo(destination);
+
             return model;
         }
 

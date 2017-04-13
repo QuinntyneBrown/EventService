@@ -17,7 +17,9 @@ export class EventMasterDetailComponent extends HTMLElement {
 
     static get observedAttributes () {
         return [
-            "events"
+            "events",
+            "tab-index",
+            "page-index"
         ];
     }
 
@@ -51,6 +53,7 @@ export class EventMasterDetailComponent extends HTMLElement {
         
         this.eventListElement.setAttribute("events", JSON.stringify(this.events));
         this.eventEditElement.setAttribute("event", JSON.stringify(new Event()));
+        this.eventEditElement.setAttribute("tab-index", this.customTabIndex);
     }
 
     public onEventEdit(e) {
@@ -75,14 +78,29 @@ export class EventMasterDetailComponent extends HTMLElement {
                     this.connectedCallback();
 
                 break;
+
+            case "tab-index":
+                this.customTabIndex = newValue;
+                break;
+
+            case "page-index":
+                this.customPageIndex = newValue;
+                break;
         }
     }
+
+    public customTabIndex: any;
+
+    public customPageIndex: any;
 
     public get value(): Array<Event> { return this.events; }
 
     private events: Array<Event> = [];
+
     public event: Event = <Event>{};
+
     public get eventEditElement(): HTMLElement { return this.querySelector("ce-event-edit-embed") as HTMLElement; }
+
     public get eventListElement(): HTMLElement { return this.querySelector("ce-event-list-embed") as HTMLElement; }
 }
 

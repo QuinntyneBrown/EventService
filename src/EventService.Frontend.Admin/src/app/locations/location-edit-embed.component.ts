@@ -22,6 +22,7 @@ export class LocationEditEmbedComponent extends HTMLElement {
     
     private async _bind() {        
         if (this.location) {
+            this._nameInputElement.value = this.location.name;
             this._addressInputElement.value = this.location.address;
             this._cityInputElement.value = this.location.city;
             this._provinceInputElement.value = this.location.province;
@@ -31,6 +32,7 @@ export class LocationEditEmbedComponent extends HTMLElement {
     
     public get value(): Location {
         return {
+            name: this._nameInputElement.value,
             address: this._addressInputElement.value,
             city: this._cityInputElement.value,
             province: this._provinceInputElement.value,
@@ -39,6 +41,7 @@ export class LocationEditEmbedComponent extends HTMLElement {
     }
 
     public set value(location: Location) {        
+        this._nameInputElement.value = location.name != undefined ? location.name : "";
         this._addressInputElement.value = location.address != undefined ? location.address : "";
         this._cityInputElement.value = location.city != undefined ? location.city : "";
         this._provinceInputElement.value = location.province != undefined ? location.province : "";
@@ -50,7 +53,7 @@ export class LocationEditEmbedComponent extends HTMLElement {
             case "location":
                 this.location = JSON.parse(newValue);
                 if (this.parentNode) {
-                    alert("?");
+                    this._nameInputElement.value = this.location.name != undefined ? this.location.name : "";
                     this._addressInputElement.value = this.location.address != undefined ? this.location.address : "";
                     this._cityInputElement.value = this.location.city != undefined ? this.location.city : "";
                     this._provinceInputElement.value = this.location.province != undefined ? this.location.province : "";
@@ -62,6 +65,8 @@ export class LocationEditEmbedComponent extends HTMLElement {
     
     public location: Location;
 
+    private get _nameInputElement(): HTMLInputElement { return this.querySelector(".location-name") as HTMLInputElement; }
+    
     private get _addressInputElement(): HTMLInputElement { return this.querySelector(".location-address") as HTMLInputElement; }
 
     private get _cityInputElement(): HTMLInputElement { return this.querySelector(".location-city") as HTMLInputElement; }

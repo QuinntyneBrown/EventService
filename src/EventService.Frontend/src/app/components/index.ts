@@ -1,2 +1,2 @@
-export * from "./event.component";
-export * from "./events.component";
+export * from "./near-by-event.component";
+export * from "./near-by-events.component";

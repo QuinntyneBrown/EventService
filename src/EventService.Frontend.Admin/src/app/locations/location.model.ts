@@ -1,5 +1,7 @@
 export class Location { 
 
+    public name: any;
+
     public address: any;
 
     public city: any;

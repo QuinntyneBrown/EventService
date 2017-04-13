@@ -13,6 +13,8 @@ namespace EventService.Features.Events
 
         public string Name { get; set; }
 
+        public string Url { get; set; }
+
         public string ImageUrl { get; set; }
         
         public string Description { get; set; }
@@ -43,6 +45,8 @@ namespace EventService.Features.Events
             model.Start = entity.Start;
 
             model.End = entity.End;
+
+            model.Url = entity.Url;
 
             model.EventLocation = LocationApiModel.FromLocation(entity.EventLocation);
             

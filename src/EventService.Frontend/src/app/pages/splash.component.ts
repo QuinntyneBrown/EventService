@@ -31,6 +31,8 @@ export class SplashComponent extends HTMLElement {
         var closeEvents = await this._apiService.getClosetEvents({
             address: this._addressInputElement.value
         });
+        
+        this._nearByEventsElement.setAttribute("events", JSON.stringify(closeEvents));
     }
 
     private _setEventListeners() {
@@ -44,6 +46,9 @@ export class SplashComponent extends HTMLElement {
     private get _addressInputElement(): HTMLInputElement { return this.querySelector(".address") as HTMLInputElement; }
 
     private get _getNearByEventsButtonElement(): HTMLElement { return this.querySelector("ce-button") as HTMLElement; }
+
+    private get _nearByEventsElement(): HTMLElement { return this.querySelector("ce-near-by-events") as HTMLElement; }
+
 }
 
 customElements.define(`ce-splash`,SplashComponent);
