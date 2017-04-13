@@ -32,6 +32,7 @@ namespace EventService.Features.Events
             {
                 var events = await _context.Events
                     .Include(x => x.Tenant)
+                    .Include(x => x.EventLocation)
                     .Where(x => x.Tenant.UniqueId == request.TenantUniqueId )
                     .ToListAsync();
 

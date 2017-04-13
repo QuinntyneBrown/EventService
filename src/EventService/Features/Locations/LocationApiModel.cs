@@ -36,7 +36,7 @@ namespace EventService.Features.Locations
             return model;
         }
 
-        public void ToLocation(ref Location location)
+        public void ToLocation(Location location)
         {
             location.Address = Address;
 

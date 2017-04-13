@@ -1,12 +1,12 @@
 using EventService.Data.Model;
 using EventService.Features.Locations;
 using System;
-using System.Device.Location;
 
 namespace EventService.Features.Events
 {
-    public class EventApiModel
-    {        
+    public class ClosetEventApiModel
+    {
+
         public int Id { get; set; }
 
         public int? TenantId { get; set; }
@@ -14,19 +14,19 @@ namespace EventService.Features.Events
         public string Name { get; set; }
 
         public string ImageUrl { get; set; }
-        
+
         public string Description { get; set; }
 
         public string Abstract { get; set; }
-        
+
         public DateTime? Start { get; set; }
 
         public DateTime? End { get; set; }
 
-        public LocationApiModel EventLocation { get; set; }
+        public RelativeLocationApiModel EventLocation { get; set; }
 
-        public static TModel FromEvent<TModel>(Event entity) where
-            TModel : EventApiModel, new()
+        public static TModel FromClosetEvent<TModel>(Event entity, double originLongitude, double originLatitude) where
+            TModel : ClosetEventApiModel, new()
         {
             var model = new TModel();
 
@@ -44,14 +44,13 @@ namespace EventService.Features.Events
 
             model.End = entity.End;
 
-            model.EventLocation = LocationApiModel.FromLocation(entity.EventLocation);
-            
+            model.EventLocation = RelativeLocationApiModel.FromLocationAndOrigin(entity.EventLocation,originLongitude,originLatitude);
+
             return model;
         }
 
-        
-        public static EventApiModel FromEvent(Event entity)
-            => FromEvent<EventApiModel>(entity);
+        public static ClosetEventApiModel FromEventAndOriginCoordinates(Event entity, double originLongitude, double originLatitude)
+            => FromClosetEvent<ClosetEventApiModel>(entity, originLongitude, originLatitude);
 
     }
 }

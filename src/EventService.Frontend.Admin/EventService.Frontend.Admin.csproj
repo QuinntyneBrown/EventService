@@ -259,6 +259,12 @@
     <Content Include="src\app\events\event-master-detail.component.scss">
       <DependentUpon>event-master-detail.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\app\locations\location-edit-embed.component.html">
+      <DependentUpon>location-edit-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\locations\location-edit-embed.component.scss">
+      <DependentUpon>location-edit-embed.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\app\shared\button.component.html">
       <DependentUpon>button.component.ts</DependentUpon>
     </Content>
@@ -507,6 +513,10 @@
     <TypeScriptCompile Include="src\app\events\index.ts" />
     <TypeScriptCompile Include="src\app\events\event.model.ts" />
     <TypeScriptCompile Include="src\app\events\event-location.model.ts" />
+    <TypeScriptCompile Include="src\app\locations\index.ts" />
+    <TypeScriptCompile Include="src\app\locations\location.model.ts" />
+    <TypeScriptCompile Include="src\app\locations\location.actions.ts" />
+    <TypeScriptCompile Include="src\app\locations\location-edit-embed.component.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

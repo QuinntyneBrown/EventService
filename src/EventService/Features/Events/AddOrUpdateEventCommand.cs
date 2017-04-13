@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Data.Entity;
 
 using static EventService.Features.Geolocation.GetLongLatCoordinatesQuery;
+using EventService.Features.Locations;
 
 namespace EventService.Features.Events
 {
@@ -43,7 +44,7 @@ namespace EventService.Features.Events
 
                 entity.EventLocation = entity.EventLocation ?? new EventLocation() { TenantId = tenant.Id };
 
-                var longLatResponse = await _mediator.Send(new GetLongLatCoordinatesRequest() { Address = $"{request.Event.Address},{request.Event.City},{request.Event.Province},{request.Event.PostalCode}" });
+                var longLatResponse = await _mediator.Send(new GetLongLatCoordinatesRequest() { Address = $"{request.Event.EventLocation.Address},{request.Event.EventLocation.City},{request.Event.EventLocation.Province},{request.Event.EventLocation.PostalCode}" });
                 
                 entity.Name = request.Event.Name;
 
@@ -56,20 +57,9 @@ namespace EventService.Features.Events
                 entity.End = request.Event.End;
 
                 entity.ImageUrl = request.Event.ImageUrl;
+
+                request.Event.EventLocation.ToLocation(entity.EventLocation);
                 
-                entity.EventLocation.Longitude = longLatResponse.Longitude;
-
-                entity.EventLocation.Latitude = longLatResponse.Latitude;
-
-                entity.EventLocation.Address = request.Event.Address;
-
-                entity.EventLocation.City = request.Event.City;
-
-                entity.EventLocation.Province = request.Event.Province;
-
-                entity.EventLocation.PostalCode = request.Event.PostalCode;
-
-
                 await _context.SaveChangesAsync();
 
                 return new AddOrUpdateEventResponse();

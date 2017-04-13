@@ -303,9 +303,9 @@
     <Compile Include="Data\Model\Location.cs" />
     <Compile Include="Features\Locations\LocationApiModel.cs" />
     <Compile Include="Features\Locations\RelativeLocationApiModel.cs" />
+    <Compile Include="Features\Events\ClosetEventApiModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Features\Locations\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>

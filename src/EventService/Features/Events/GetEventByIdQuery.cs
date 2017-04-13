@@ -34,15 +34,14 @@ namespace EventService.Features.Events
                 return new GetEventByIdResponse()
                 {
                     Event = EventApiModel.FromEvent(await _context.Events
-                    .Include(x => x.Tenant)				
-					.SingleAsync(x=>x.Id == request.Id &&  x.Tenant.UniqueId == request.TenantUniqueId))
+                    .Include(x => x.Tenant)
+                    .Include(x => x.EventLocation)
+                    .SingleAsync(x=>x.Id == request.Id &&  x.Tenant.UniqueId == request.TenantUniqueId))
                 };
             }
 
             private readonly EventServiceContext _context;
             private readonly ICache _cache;
         }
-
     }
-
 }

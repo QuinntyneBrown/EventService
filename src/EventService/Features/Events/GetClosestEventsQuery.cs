@@ -22,7 +22,7 @@ namespace EventService.Features.Events
 
         public class GetClosestEventsResponse
         {
-            public ICollection<EventApiModel> Events { get; set; } = new HashSet<EventApiModel>();
+            public ICollection<ClosetEventApiModel> Events { get; set; } = new HashSet<ClosetEventApiModel>();
         }
 
         public class GetClosestEventsHandler : IAsyncRequestHandler<GetClosestEventsRequest, GetClosestEventsResponse>
@@ -39,6 +39,7 @@ namespace EventService.Features.Events
                 
                 var events = await _context.Events
                     .Include(x => x.Tenant)
+                    .Include(x=>x.EventLocation)
                     .Where(x => x.Tenant.UniqueId == request.TenantUniqueId && x.Start > utcNow)
                     .ToListAsync();
 
@@ -47,8 +48,8 @@ namespace EventService.Features.Events
 
                 return new GetClosestEventsResponse()
                 {
-                    Events = events.Select(x => EventApiModel.FromEventAndOrigin(x, longitudeAndLatitude.Longitude, longitudeAndLatitude.Latitude))
-                    .OrderBy( x => x.Distance)
+                    Events = events.Select(x => ClosetEventApiModel.FromEventAndOriginCoordinates(x, longitudeAndLatitude.Longitude, longitudeAndLatitude.Latitude))
+                    .OrderBy( x => x.EventLocation.Distance)
                     .ToList()
                 };
             }
