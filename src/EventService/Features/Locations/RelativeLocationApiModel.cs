@@ -5,7 +5,7 @@ namespace EventService.Features.Locations
 {
     public class RelativeLocationApiModel: LocationApiModel
     {                
-        public double Distance { get; set; }
+        public string Distance { get; set; }
 
         public double OriginLongitude { get; set; }
 
@@ -20,7 +20,7 @@ namespace EventService.Features.Locations
 
             var destination = new GeoCoordinate(location.Latitude, location.Longitude);
 
-            model.Distance = origin.GetDistanceTo(destination);
+            model.Distance = $"{string.Format("{0:0.#}", origin.GetDistanceTo(destination) / 1000)} KM";
 
             return model;
         }

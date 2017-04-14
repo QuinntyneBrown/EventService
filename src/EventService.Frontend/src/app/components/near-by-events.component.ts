@@ -24,7 +24,8 @@ export class NearByEventsComponent extends HTMLElement {
         this.nearByEventList.innerHTML = "";
         for (var i = 0; i < this.events.length; i++) {
             var nearByEventElement = createElement("<ce-near-by-event></ce-near-by-event>");
-            nearByEventElement.setAttribute("event", JSON.stringify(this.events[i]));
+            nearByEventElement.setAttribute("order-index", `${i + 1}`);
+            nearByEventElement.setAttribute("event", JSON.stringify(this.events[i]));            
             this.nearByEventList.appendChild(nearByEventElement);
         }
     }

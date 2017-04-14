@@ -319,6 +319,7 @@
     <Compile Include="Features\Accounts\ProfileApiModel.cs" />
     <Compile Include="Features\Accounts\ProfileController.cs" />
     <Compile Include="Features\Notifications\SendRegistrationConfirmationCommand.cs" />
+    <Compile Include="Features\Accounts\RegisterAccountApiModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Features\Accounts\" />

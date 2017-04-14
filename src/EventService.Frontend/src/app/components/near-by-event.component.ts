@@ -8,7 +8,8 @@ export class NearByEventComponent extends HTMLElement {
 
     static get observedAttributes () {
         return [
-            "event"
+            "event",
+            "order-index"
         ];
     }
 
@@ -19,8 +20,12 @@ export class NearByEventComponent extends HTMLElement {
     }
 
     private async _bind() {
-        if(this.event)
-            this._title.innerHTML = `${this.event.name} ${this.event.eventLocation.address}`;
+        if (this.event) {
+            this._orderIndexElement.innerHTML = `${this.orderIndex}`; 
+            this._nameElement.innerHTML = `${this.event.name}`;
+            this._distanceElement.innerHTML = `${this.event.eventLocation.distance}`;
+        }
+        //this._title.innerHTML = `${this.orderIndex} ${this.event.name}, ${this.event.eventLocation.address}, ${this.event.eventLocation.distance}`;
     }
 
     private _setEventListeners() {
@@ -33,7 +38,14 @@ export class NearByEventComponent extends HTMLElement {
 
     private event: any;
 
-    private get _title(): HTMLElement { return this.querySelector("h4") as HTMLElement; }
+    private orderIndex: any;
+
+    
+    private get _orderIndexElement(): HTMLElement { return this.querySelector(".near-by-event-order-index") as HTMLElement; }
+
+    private get _nameElement(): HTMLElement { return this.querySelector(".near-by-event-name") as HTMLElement; }
+
+    private get _distanceElement(): HTMLElement { return this.querySelector(".near-by-event-distance") as HTMLElement; }
 
     attributeChangedCallback (name, oldValue, newValue) {
         switch (name) {
@@ -43,6 +55,10 @@ export class NearByEventComponent extends HTMLElement {
                 if (this.parentNode)
                     this._bind();
 
+                break;
+
+            case "order-index":
+                this.orderIndex = newValue;
                 break;
         }
     }

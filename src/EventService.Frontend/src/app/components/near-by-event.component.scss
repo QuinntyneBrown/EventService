@@ -2,4 +2,27 @@
 
 ce-near-by-event {
     display:block;
+    height:50px;
+
+    .near-by-event-order-index,
+    .near-by-event-info,
+    .near-by-event-distance {
+        position:relative;
+        float:left;
+        width:33%;
+    }
+
+    h4 {
+        font-size:1em;
+        line-height:1em;
+        padding:0;
+        margin:0;
+    }
+}
+
+
+ce-near-by-event::after {
+    clear:both;
+    display:block;
+    content: " ";
 }

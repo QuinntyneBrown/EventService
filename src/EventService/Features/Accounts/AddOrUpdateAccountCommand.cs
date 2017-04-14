@@ -39,8 +39,19 @@ namespace EventService.Features.Accounts
                     _context.Accounts.Add(entity = new Account() { TenantId = tenant.Id });
                 }
 
-                entity.Name = request.Account.Name;
-                
+                entity.Firstname = request.Account.Firstname;
+
+                entity.Lastname = request.Account.Lastname;
+
+                entity.Email = request.Account.Email;
+
+                entity.Profiles.Clear();
+
+                foreach(var profile in request.Account.Profiles)
+                {
+
+                }
+
                 await _context.SaveChangesAsync();
 
                 return new AddOrUpdateAccountResponse();
