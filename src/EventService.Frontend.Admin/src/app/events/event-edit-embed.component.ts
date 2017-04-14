@@ -7,7 +7,9 @@ const template = require("./event-edit-embed.component.html");
 const styles = require("./event-edit-embed.component.scss");
 
 export class EventEditEmbedComponent extends HTMLElement {
-    constructor() {
+    constructor(
+        private _window:Window = window
+    ) {
         super();
         this.onSave = this.onSave.bind(this);
         this.onDelete = this.onDelete.bind(this);
@@ -81,6 +83,8 @@ export class EventEditEmbedComponent extends HTMLElement {
         } as Event;
         
         this.dispatchEvent(new EventAdd(event));            
+
+        this._window.scrollTo(0, 0);
     }
 
     public onDelete() {        

@@ -9,7 +9,15 @@ ce-event-master-detail {
         float:left;
         display:inline-block;
         position:relative;
-        width:50%;
+        width:calc(50% - 10px);
+    }
+
+    ce-event-edit-embed {
+        margin-right:10px;
+    }
+
+    ce-event-list-embed {
+        margin-left:10px;
     }
 }
 
