@@ -35,9 +35,6 @@ export class EventEditEmbedComponent extends HTMLElement {
         this._endDatePicker = rome(this._endInputElement);
 
         
-        if (this._customTabIndex != undefined)
-            this._tabsElement.setAttribute("custom-tab-index", this._customTabIndex);
-
         if (this.event) {                
             this._nameInputElement.value = this.event.name;
             this._imageUrlInputElement.value = this.event.imageUrl;
@@ -117,7 +114,7 @@ export class EventEditEmbedComponent extends HTMLElement {
                 break;
 
             case "tab-index":
-                this._customTabIndex = newValue;
+                this._tabsElement.setAttribute("custom-tab-index", newValue);
                 break;
         }           
     }
