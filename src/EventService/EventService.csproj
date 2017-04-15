@@ -219,6 +219,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Data\Clients\AccountServiceClient.cs" />
+    <Compile Include="Data\Clients\TaxonomyServiceClient.cs" />
     <Compile Include="Data\EventServiceContext.cs" />
     <Compile Include="Data\Helpers\SoftDeleteAttribute.cs" />
     <Compile Include="Data\Helpers\SoftDeleteInterceptor.cs" />
@@ -320,9 +322,16 @@
     <Compile Include="Features\Accounts\ProfileController.cs" />
     <Compile Include="Features\Notifications\SendRegistrationConfirmationCommand.cs" />
     <Compile Include="Features\Accounts\RegisterAccountApiModel.cs" />
+    <Compile Include="Data\Model\EventCategoryRef.cs" />
+    <Compile Include="Data\Model\EventTagRef.cs" />
+    <Compile Include="Features\Taxonomy\TagApiModel.cs" />
+    <Compile Include="Features\Taxonomy\CategoryApiModel.cs" />
+    <Compile Include="Features\Taxonomy\CategoryController.cs" />
+    <Compile Include="Features\Taxonomy\TagController.cs" />
+    <Compile Include="Features\Taxonomy\GetTagsQuery.cs" />
+    <Compile Include="Features\Taxonomy\GetCategoriesQuery.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Features\Accounts\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>

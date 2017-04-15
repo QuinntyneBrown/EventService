@@ -1,5 +1,7 @@
 using EventService.Data.Helpers;
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EventService.Data.Model
@@ -28,7 +30,11 @@ namespace EventService.Data.Model
 
         public DateTime? End { get; set; }
 
-		public DateTime CreatedOn { get; set; }
+        public ICollection<EventTagRef> EventTagRefs { get; set; } = new HashSet<EventTagRef>();
+
+        public ICollection<EventCategoryRef> EventCategoryRefs { get; set; } = new HashSet<EventCategoryRef>();
+
+        public DateTime CreatedOn { get; set; }
         
 		public DateTime LastModifiedOn { get; set; }
         

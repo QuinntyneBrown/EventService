@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Data.Entity;
+using EventService.Data.Clients;
 
 namespace EventService.Features.Events
 {
@@ -22,10 +23,11 @@ namespace EventService.Features.Events
 
         public class GetEventsHandler : IAsyncRequestHandler<GetEventsRequest, GetEventsResponse>
         {
-            public GetEventsHandler(EventServiceContext context, ICache cache)
+            public GetEventsHandler(EventServiceContext context, ICache cache, ITaxonomyServiceClient client)
             {
                 _context = context;
                 _cache = cache;
+                _client = client;
             }
 
             public async Task<GetEventsResponse> Handle(GetEventsRequest request)
@@ -33,6 +35,8 @@ namespace EventService.Features.Events
                 var events = await _context.Events
                     .Include(x => x.Tenant)
                     .Include(x => x.EventLocation)
+                    .Include(x => x.EventCategoryRefs)
+                    .Include(x => x.EventTagRefs)                    
                     .Where(x => x.Tenant.UniqueId == request.TenantUniqueId )
                     .ToListAsync();
 
@@ -44,6 +48,7 @@ namespace EventService.Features.Events
 
             private readonly EventServiceContext _context;
             private readonly ICache _cache;
+            protected readonly ITaxonomyServiceClient _client;
         }
 
     }
