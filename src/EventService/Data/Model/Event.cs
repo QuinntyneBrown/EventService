@@ -30,9 +30,9 @@ namespace EventService.Data.Model
 
         public DateTime? End { get; set; }
 
-        public ICollection<EventTagRef> EventTagRefs { get; set; } = new HashSet<EventTagRef>();
+        public ICollection<TagRef> EventTagRefs { get; set; } = new HashSet<TagRef>();
 
-        public ICollection<EventCategoryRef> EventCategoryRefs { get; set; } = new HashSet<EventCategoryRef>();
+        public ICollection<CategoryRef> EventCategoryRefs { get; set; } = new HashSet<CategoryRef>();
 
         public DateTime CreatedOn { get; set; }
         

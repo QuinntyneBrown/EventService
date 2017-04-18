@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace EventService.Data.Model
 {
     [SoftDelete("IsDeleted")]
-    public class EventTagRef: ILoggable
+    public class TagRef: ILoggable
     {
         public int Id { get; set; }
         
