@@ -55,6 +55,8 @@ namespace EventService.Features.Events
 
                 entity.Url = request.Event.Url;
 
+                entity.DisplayName = request.Event.DisplayName;
+
                 entity.Description = request.Event.Description;
 
                 entity.Abstract = request.Event.Abstract;

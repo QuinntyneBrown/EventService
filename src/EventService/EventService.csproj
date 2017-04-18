@@ -322,6 +322,7 @@
     <Compile Include="Features\Accounts\RegisterAccountApiModel.cs" />
     <Compile Include="Data\Model\CategoryRef.cs" />
     <Compile Include="Data\Model\TagRef.cs" />
+    <Compile Include="Data\Model\EventType.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

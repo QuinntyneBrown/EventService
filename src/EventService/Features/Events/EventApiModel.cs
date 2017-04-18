@@ -13,6 +13,8 @@ namespace EventService.Features.Events
 
         public string Name { get; set; }
 
+        public string DisplayName { get; set; }
+
         public string Url { get; set; }
 
         public string ImageUrl { get; set; }
@@ -37,6 +39,8 @@ namespace EventService.Features.Events
             model.TenantId = entity.TenantId;
 
             model.Name = entity.Name;
+
+            model.DisplayName = entity.DisplayName;
 
             model.Description = entity.Description;
 

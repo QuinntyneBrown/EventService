@@ -1,9 +1,12 @@
 import { Location } from "../locations";
+import { EventType } from "./event-type.model";
 
 export class Event { 
     public id:any;
 
     public name: string;
+
+    public displayName: string;
 
     public url: string;
 
@@ -19,10 +22,14 @@ export class Event {
 
     public eventLocation: Location;
 
+    public eventType: EventType;
+
     public static fromJSON(data: any): Event {
         let event = new Event();
 
         event.name = data.name;
+
+        event.displayName = data.displayName;
 
         event.imageUrl = data.imageUrl;  
 
@@ -35,6 +42,8 @@ export class Event {
         event.end = data.end;
 
         event.eventLocation = Location.fromJSON(data.location);
+
+        event.eventType = EventType.fromJSON(data.eventType);
 
         return event;
     }

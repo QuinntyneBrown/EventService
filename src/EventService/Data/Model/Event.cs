@@ -1,6 +1,5 @@
 using EventService.Data.Helpers;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,10 +12,15 @@ namespace EventService.Data.Model
         
 		[ForeignKey("Tenant")]
         public int? TenantId { get; set; }
+
+        [ForeignKey("EventType")]
+        public int? EventTypeId { get; set; }
         
 		[Index("NameIndex", IsUnique = false)]
         [Column(TypeName = "VARCHAR")]        
 		public string Name { get; set; }
+
+        public string DisplayName { get; set; }
 
         public string Url { get; set; }
 
@@ -47,5 +51,7 @@ namespace EventService.Data.Model
         public virtual Tenant Tenant { get; set; }
 
         public virtual EventLocation EventLocation { get; set; }
+
+        public virtual EventType EventType { get; set; }
     }
 }

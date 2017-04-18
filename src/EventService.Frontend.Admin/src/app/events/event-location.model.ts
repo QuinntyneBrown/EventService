@@ -14,13 +14,21 @@ export class EventLocation {
     public latitude: string;  
 
     public fromJSON(data: any): EventLocation {
+
         let eventLocation = new EventLocation();
+
         eventLocation.address = data.address;
+
         eventLocation.city = data.city;
+
         eventLocation.province = data.province;
+
         eventLocation.postalCode = data.postalCode;
+
         eventLocation.longitude = data.longitude;
+
         eventLocation.latitude = data.latitude;         
+
         return eventLocation;
     }
 }

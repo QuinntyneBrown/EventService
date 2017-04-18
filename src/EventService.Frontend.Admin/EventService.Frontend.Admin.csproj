@@ -587,6 +587,7 @@
     <TypeScriptCompile Include="src\app\profiles\index.ts" />
     <TypeScriptCompile Include="src\app\profiles\profile.model.ts" />
     <TypeScriptCompile Include="src\app\accounts\register-account.component.ts" />
+    <TypeScriptCompile Include="src\app\events\event-type.model.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
